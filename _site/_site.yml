@@ -1,0 +1,10 @@
+name: "Scale Up Nutrition Strategy"
+navbar:
+  title: "Scaling Up Nutrition"
+  left:
+    - text: "Overview"
+      href: Overview.html
+    - text: "Infant and Young Child Feeding"
+      href: IYCF.html
+    - text: "Multiple Micronutrient Powders"
+      href: MNP.html
