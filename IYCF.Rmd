@@ -1,0 +1,85 @@
+---
+title: "Infant and Young Child Feeding (IYCF)"
+output: html_document
+---
+
+
+```{r, include=FALSE}
+library(leaflet)
+library (raster)
+library(rgdal)
+library(RColorBrewer)
+library(plotly)
+library(devtools)
+#devtools::install_github("rstudio/leaflet")
+
+setwd("C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/")
+
+library(readr)
+iycf <- readstata13::read.dta13("data/MAP_2015_General_Info_IYCF.dta")
+sam <- readstata13::read.dta13("data/2015_SAM_TOTAL.dta")
+mnp <- readstata13::read.dta13("data/2015_MNP.dta")
+
+iycf$FP_code <- as.factor(iycf$FP_code)
+iycf_v2 <- iycf[which(iycf$FP_code!='NA'),]
+```
+
+###Infant and Young Child Feeding practices are the cornerstone of good nutrition. 
+
+Optimal breastfeeding and complementary feeding ensures that infants and young children receive the nutrients they need to grow, develop and thrive. Providing children with the right foods at the right time in their development offers disease protection, prevents stunting, wasting and micronutrient deficiencies, and reduces the risk of overweight and obesity.
+
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/final-project-nutrition/images/IYCFpractices.png" width="40%" position="center" />
+
+###An optimal enabling environment for good nutrition
+
+UNICEF collaborates with governments and partners to create an environment in which the policies and programmes that protect and promote infant and young child feeding are broadly supported, sufficiently funded and effectively implemented. An important step in fostering this enabling environment for IYCF is to ensure that a comprehensive policy is in place to galvanize policy action. Results show that countries have consistently adopted IYCF policies, with 96 per cent of countries reporting to have one in place, either as a stand-alone policy or as part a broader nutrition or health policy. Further, 75 percent of countries have adapted the 2010 guidelines on infant feeding in the context of HIV to their national policy. New guideline updates on HIV and infant feeding were released in late 2016 and are awaiting adoption in many countries.
+
+###Map 1. In 2015, 64 out of 98 countries have adopted some legal measures, yet most need to be further strengthened
+
+```{r, include=FALSE}
+library(raster)
+world_spdf <- shapefile("data/world_map/TM_WORLD_BORDERS_SIMPL-0.3.shp")
+
+# Merge the QoG data to Shape Files
+library(dplyr)
+IYCF2 <- world_spdf@data %>% left_join(iycf_v2, by = c(FIPS = "fips"))
+world_spdf@data <- IYCF2
+```
+
+
+```{r, echo=FALSE}
+
+leaflet(world_spdf) %>% 
+    setView(lat=10, lng=0 , zoom=2) %>%
+    addPolygons(
+    stroke = FALSE, fillOpacity = 0.5, smoothFactor = 0.5, 
+    color = ~colorFactor(c("#ffe2e8", "#a09ecc" , "#536987" , "#2d355a"), FP_code)(FP_code),
+    popup = paste("Country:",world_spdf$NAME,"<br/>",
+                  "Code:",world_spdf$FP_code,"")) %>%
+  addLegend("bottomright", 
+  pal = colorFactor(c("#ffe2e8", "#2d355a" , "#a09ecc"), world_spdf$FP_code), values = ~FP_code,
+  title = "", opacity = 0.5)
+
+```
+
+
+```{r}
+plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = ~Region, type = "bar")
+```
+
+
+Scatter...
+```{r}
+#plot_ly(filter(edu_long, area_type=="county"), x = ~coll, y=~HS, 
+#                     color = ~year, type = "scatter",
+#                     text = ~paste("County: ", area_name, 'Year:', year)) 
+```
+
+
+#Severe Acute Malnutrition
+```{r}
+library(readr)
+iycf <- readstata13::read.dta13("data/MAP_2015_General_Info_IYCF.dta")
+```
+
+
