@@ -1,9 +1,0 @@
----
-title: ""
-output: html_document
----
-
-##Is the Scaling Up Nutrition Strategy being effectively implemented globally?
-
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/final-project-nutrition/images/kid intro.png" width="100%" />
-
