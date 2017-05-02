@@ -13,7 +13,23 @@ Home fortification with micronutrient powders offers one of the best opportuniti
 
 Micronutrient powders (MNP) are best introduced as part of an IYCF strategy. When combined with counselling for mothers on complementary feeding, MNP interventions are particularly effective at improving children’s diets and preventing micronutrient deficiencies, such as iron-deficiency anaemia. In 2015, 76% of countries implemented MNP interventions integrated with IYCF programmes.
 
-```{r}
+```{r, include=FALSE}
+library(leaflet)
+library (raster)
+library(rgdal)
+library(RColorBrewer)
+library(plotly)
+library(devtools)
+#devtools::install_github("rstudio/leaflet")
+
+setwd("C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition")
+
+library(readr)
+mnp <- readstata13::read.dta13("data/2015_MNP.dta")
+```
+
+
+```{r, echo=FALSE}
 #Mapa integration
 ```
 

@@ -8,3 +8,5 @@ navbar:
       href: IYCF.html
     - text: "Multiple Micronutrient Powders"
       href: MNP.html
+    - text: "Severe Acute Malnutrition"
+      href: SAM.html

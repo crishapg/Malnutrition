@@ -16,7 +16,6 @@ setwd("C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition")
 
 library(readr)
 iycf <- readstata13::read.dta13("data/MAP_2015_General_Info_IYCF.dta")
-sam <- readstata13::read.dta13("data/2015_SAM_TOTAL.dta")
 mnp <- readstata13::read.dta13("data/2015_MNP.dta")
 
 iycf$FP_code <- as.factor(iycf$FP_code)
@@ -80,12 +79,4 @@ plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = ~Region, type = "bar"
 ```{r, echo=FALSE}
 plot_ly(iycf, x = ~FP_counsellingPHC, type = "histogram")
 ```
-
-
-#Severe Acute Malnutrition
-```{r}
-library(readr)
-iycf <- readstata13::read.dta13("data/MAP_2015_General_Info_IYCF.dta")
-```
-
 

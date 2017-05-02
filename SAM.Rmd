@@ -1,0 +1,9 @@
+---
+title: "SAM"
+output: html_document
+---
+#Severe Acute Malnutrition
+```{r}
+library(readr)
+sam <- readstata13::read.dta13("data/2015_SAM_TOTAL.dta")
+```
