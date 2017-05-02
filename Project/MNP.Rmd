@@ -3,7 +3,7 @@ title: "Multiple Micronutrient Powders"
 output: html_document
 ---
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/MNP2.jpg" width="80%" />
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/Project/images/MNP2.jpg" width="80%" />
 
 Home fortification with micronutrient powders offers one of the best opportunities for improving children’s diets when nutrient needs cannot be met with locally available foods alone.
 
@@ -27,12 +27,12 @@ mnp <- readstata13::read.dta13("data/2015_MNP.dta")
 ```
 
 
-```{r, echo=FALSE}
+```{r, include=FALSE}
 #Map integration
 ```
 
 
-In 2015, MNP interventions reached more than 10 million2 children 6-59 months of age in 65 countries. The scale and reach of MNP programmes varied across the regions, with Latin America and the Caribbean, East Asia and the Pacific and South Asia accounting for two thirds of all children reached.
+In 2015, MNP interventions reached more than 10 million children 6-59 months of age in 65 countries. The scale and reach of MNP programmes varied across the regions, with Latin America and the Caribbean, East Asia and the Pacific and South Asia accounting for two thirds of all children reached.
 
 ### Figure 1. Children given Micronutrient Powder, per region, 2015
 
@@ -73,11 +73,12 @@ library(plotly)
 plot_ly(MNP, x = ~Region, y=~childrenMNP, color = ~Region, type = "bar", opacity=0.8)
 ```
 
-#Scaling up has been effective, but fluctuations in coverage have left some of the most vulnerable children at risk.
+#Fluctuations in coverage have left some of the most vulnerable children at risk.
 
 Vitamin A coverage has improved dramatically in the last 15 years. In 2000, less than one in three children was fully protected, while in 2015, more than two out of three children in need are reaping the benefits of full coverage.
 
 Despite this success, two-dose coverage has been inconsistent between years and a number of regions have experienced wide fluctuations in coverage over a short period of time. These coverage gaps are particularly apparent in West and Central Africa, South Asia and Eastern and Southern Africa – and they jeopardize the survival and well-being of children in these regions.
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/Graph SUN.jpg" width="100%" />
+###Figure 2. Coverage of vitamin A per region
 
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/Project/images/GraphSUN.jpg" width="100%" />

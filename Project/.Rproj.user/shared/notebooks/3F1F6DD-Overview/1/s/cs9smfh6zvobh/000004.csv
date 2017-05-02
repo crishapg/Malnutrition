@@ -1,0 +1,7 @@
+"0","jme2014 <- jme[which(jme$year=='2014'),]"
+"0","library(plotly)"
+"0","p<- plot_ly(jme2014, x = ~num_wasting, y=~region, type = ""bar"", "
+"0","                     text = ~paste('Wasting, number of children:',num_wasting), name='Wasting')  %>%"
+"0","  add_trace(x = ~num_stunting, name = 'Stunting') %>%"
+"0","  layout(xaxis = list(title = 'Count'), barmode = 'group')"
+"0","p"
