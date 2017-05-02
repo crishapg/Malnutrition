@@ -3,11 +3,11 @@ title: "Multiple Micronutrient Powders"
 output: html_document
 ---
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/final-project-nutrition/images/MNP2.jpg" width="80%" />
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/MNP2.jpg" width="80%" />
 
 #Scaling up has been effective, but fluctuations in coverage have left some of the most vulnerable children at risk.
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/final-project-nutrition/images/Graph SUN.jpg" width="100%" />
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/Graph SUN.jpg" width="100%" />
 
 Home fortification with micronutrient powders offers one of the best opportunities for improving children’s diets when nutrient needs cannot be met with locally available foods alone.
 

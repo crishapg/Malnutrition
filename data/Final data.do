@@ -1,4 +1,4 @@
-set more all
+set more off
 
 use "C:\Users\crish\OneDrive\Documents\Columbia SIPA\2017 Spring\Data Visualization\Final Project\data\MAP_2015_General_Info_IYCF.dta", clear
 
@@ -11,6 +11,7 @@ tab Code
 gen FP_code="No legal measures" if Code=="No-but law/agreement is drafted/in progress" | Code=="No-no laws or actions"
 replace FP_code="Some legal measures" if Code=="Yes-partially – not all provisions of Code and Resolutions included" | Code=="Yes-voluntary agreement between Government and manufacturers"
 replace FP_code="Full legal measures" if Code=="Yes-all provisions of Code and Resolutions included"
+replace FP_code="No Data" if FP_code==""
 tab Code FP_code
 
 gen FP_policy="Standalone" if Policy_standalone=="Yes"

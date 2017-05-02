@@ -12,7 +12,7 @@ library(plotly)
 library(devtools)
 #devtools::install_github("rstudio/leaflet")
 
-setwd("C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/")
+setwd("C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition")
 
 library(readr)
 iycf <- readstata13::read.dta13("data/MAP_2015_General_Info_IYCF.dta")
@@ -27,7 +27,7 @@ iycf_v2 <- iycf[which(iycf$FP_code!='NA'),]
 
 Optimal breastfeeding and complementary feeding ensures that infants and young children receive the nutrients they need to grow. Providing children with the right foods at the right time in their development offers disease protection, prevents stunting, wasting and micronutrient deficiencies, and reduces the risk of overweight and obesity.
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/final-project-nutrition/images/IYCFpractices.png" width="40%" position="center" />
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/IYCFpractices.png" width="40%" position="center" />
 
 ###An optimal enabling environment for good nutrition
 
