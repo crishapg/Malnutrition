@@ -5,7 +5,7 @@ output: html_document
 
 ##Is the Scaling Up Nutrition Strategy being effectively implemented globally?
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/kid intro.png" width="80%" />
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/framework.png" width="80%" />
 
 ##Data
 - Joint Malnutrition Estimates. UNICEF, World Bank, WHO -> survey data from MICS, DHS and other national surveys
