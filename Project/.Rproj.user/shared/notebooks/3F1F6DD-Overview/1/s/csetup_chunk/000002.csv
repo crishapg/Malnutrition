@@ -1,0 +1,5 @@
+"0","setwd(""C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/"")"
+"2","The working directory was changed to C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the the working directory for notebook chunks."
+"0","library(readr)"
+"2","Error in library(readr) : there is no package called ‘readr’
+"

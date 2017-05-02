@@ -5,22 +5,20 @@ output: html_document
 
 <img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/MNP2.jpg" width="80%" />
 
-#Scaling up has been effective, but fluctuations in coverage have left some of the most vulnerable children at risk.
-
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/Graph SUN.jpg" width="100%" />
-
 Home fortification with micronutrient powders offers one of the best opportunities for improving children’s diets when nutrient needs cannot be met with locally available foods alone.
 
 Micronutrient powders (MNP) are best introduced as part of an IYCF strategy. When combined with counselling for mothers on complementary feeding, MNP interventions are particularly effective at improving children’s diets and preventing micronutrient deficiencies, such as iron-deficiency anaemia. In 2015, 76% of countries implemented MNP interventions integrated with IYCF programmes.
 
 ```{r, include=FALSE}
+
+devtools::install_github("rstudio/leaflet")
+
 library(leaflet)
 library (raster)
 library(rgdal)
 library(RColorBrewer)
 library(plotly)
 library(devtools)
-#devtools::install_github("rstudio/leaflet")
 
 setwd("C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition")
 
@@ -76,3 +74,12 @@ ggplot(data=MNP, aes(x=Region, y=childrenMNP, fill=Region)) + geom_bar(stat = "i
 library(plotly)
 plot_ly(MNP, x = ~Region, y=~childrenMNP, color = ~Region, type = "bar", opacity=0.8)
 ```
+
+#Scaling up has been effective, but fluctuations in coverage have left some of the most vulnerable children at risk.
+
+Vitamin A coverage has improved dramatically in the last 15 years. In 2000, less than one in three children was fully protected, while in 2015, more than two out of three children in need are reaping the benefits of full coverage.
+
+Despite this success, two-dose coverage has been inconsistent between years and a number of regions have experienced wide fluctuations in coverage over a short period of time. These coverage gaps are particularly apparent in West and Central Africa, South Asia and Eastern and Southern Africa – and they jeopardize the survival and well-being of children in these regions.
+
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/Graph SUN.jpg" width="100%" />
+

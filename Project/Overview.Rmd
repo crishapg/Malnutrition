@@ -21,7 +21,7 @@ Poor nutrition in the first 1,000 days of a child's life can also lead to stunte
 
 ###Forms of malnutrition
 
-<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/definitions.png" width="100%" />
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Final-Project/images/definitions.png" width="100%" />
 
 
 
@@ -204,7 +204,7 @@ ggplot(data=trend_stunting_global, aes(x=year, y=stunting_global)) +
 
 #### Global prevalence of stunting, 1995-2015
 
-Malnutrition rates remain alarming: stunting is declining too slowly while
+Malnutrition rates remain alarming: stunting is declining too slowly
 
 ```{r, echo=FALSE}
 plot_ly(trend_stunting_global, x = ~year, y=~stunting_global, 
@@ -286,58 +286,3 @@ datatable(jme_short,
                        'Stunting (%)', 'Children < 5 years old (000)'), 
           filter = 'top', options = list(pageLength = 10, autoWidth = TRUE))
 ```
-
-Data...
-
-```{r, include=FALSE}
-library(raster)
-#world_spdf <- shapefile("data/world_map/TM_WORLD_BORDERS_SIMPL-0.3.shp")
-
-# Merge the QoG data to Shape Files
-library(dplyr)
-mapdisparities <- world_spdf@data %>% left_join(disparities, by = c(ISO3 = "iso"))
-world_spdf@data <- mapdisparities
-
-```
-
-
-#Disparities between malnutrition and wealth
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(leaflet)
-leaflet(world_spdf) %>% 
-  addProviderTiles("Esri.WorldGrayCanvas")  %>% 
-  #setView(lat=34.612255, lng=-22.300443 , zoom=10) %>%
-    # Base groups = Background layer
-    addTiles(group = "OpenStreetMap") %>%
-    addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
-    addProviderTiles(providers$Stamen.Toner, group = "Toner")  %>%
-    
-    # Data Layers
-      # First Data Layer: Stunting 20% poorer
-    addPolygons(group="Stunting 1st wealth quintile",
-                stroke = FALSE, fillOpacity = 0.5, smoothFactor = 0.5, 
-                color = ~colorNumeric("Spectral", wq1)(wq1),
-                popup = paste("Country:",world_spdf$NAME,"<br/>",
-                              "Stunting in 1st quintile:", world_spdf$wq1,"%","<br/>")) %>%
-    #Add legends
-    #addLegend("bottomright", pal = colorNumeric("Spectral", world_spdf$wq1), 
-     #         values = ~wq1, title = "% Stunting 1st WQ", opacity = 0.5) %>%
-     
-    # Second Data Layer: College
-    addPolygons(group="Stunting 5th wealth quintile", data=world_spdf,
-                stroke = FALSE, fillOpacity = 0.5, smoothFactor = 0.5, 
-                color = ~colorNumeric("Spectral", wq5)(wq5),
-                popup = paste("Country:",world_spdf$NAME,"<br/>",
-                              "Stunting in 5th quintile:", world_spdf$wq5,"%","<br/>")) %>%
-    #Add legends
-    addLegend("bottomright", pal = colorNumeric("Spectral", world_spdf$wq5), 
-              values = ~wq5, title = "% Stunting 5th WQ", opacity = 0.5) %>%
-  
-    # Layers control
-    addLayersControl(
-    baseGroups = c("OpenStreetMap", "Toner", "Toner Lite"),
-    overlayGroups = c("Stunting 1st wealth quintile","Stunting 5th wealth quintile"),
-    options = layersControlOptions(collapsed = TRUE) )
-```
-

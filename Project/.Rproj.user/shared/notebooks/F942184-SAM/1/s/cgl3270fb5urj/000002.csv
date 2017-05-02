@@ -1,0 +1,4 @@
+"0","samadm <- c(1.4, 1.96 , 2.66, 2.91, 3.21, 3.5)"
+"0","year <- c(""2009"", ""2011"", ""2012"", ""2013"", ""2014"", ""2015"")"
+"0","SAMadm <- data.frame(samadm,year)"
+"0","names(SAMadm) <- c(""admissionSAM"",""Year"")"

@@ -1,9 +1,126 @@
 ---
-title: "SAM"
+title: "Treatment of Severe Acute Malnutrition"
 output: html_document
 ---
-#Severe Acute Malnutrition
-```{r}
+
+```{r, include=FALSE}
+setwd("C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/")
+
+library(leaflet)
+library (raster)
+library(rgdal)
+library(RColorBrewer)
+library(plotly)
+library(devtools)
 library(readr)
-sam <- readstata13::read.dta13("data/2015_SAM_TOTAL.dta")
+
+sam <- readstata13::read.dta13("data/2015_SAM_TOTAL_codes.dta")
 ```
+
+
+#####Globally the number of children admitted to SAM treatment programmes has increased steadily, from 1.4 million in 2009 to 3.53 million children in 2015. The rate of increase is slow compared with previous years.
+
+###Graph 1. Trends in global admissions to SAM programmes
+```{r, include=FALSE}
+samadm <- c(1.4, 1.96 , 2.66, 2.91, 3.21, 3.5)
+year <- c("2009", "2011", "2012", "2013", "2014", "2015")
+SAMadm <- data.frame(samadm,year)
+names(SAMadm) <- c("admissionSAM","Year")
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+plot_ly(SAMadm, x = ~Year, y=~admissionSAM, color = ~year, type = "bar", opacity=0.8)
+
+```
+
+##Coverage of SAM treatment per region
+
+```{r, include=FALSE}
+library(raster)
+world_spdf <- shapefile("C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/data/world_map/TM_WORLD_BORDERS_SIMPL-0.3.shp")
+
+# Merge the QoG data to Shape Files
+library(dplyr)
+samburden <- world_spdf@data %>% left_join(sam, by = c(ISO3 = "iso3"))
+world_spdf@data <- samburden
+
+```
+
+#####More children are being treated for SAM than ever before: admissions increased from 3.2 million children from 57 countries in 2014 to 3.5 million children in 68 countries in 2015. However, there is still only a shocking one in five children with SAM receiving lifesaving care. 
+
+
+
+
+###Map 1. Target and admissions of children 6 to 59 months old to SAM treatment, 2015
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+
+library(leaflet)
+leaflet(world_spdf) %>% 
+  addProviderTiles("Esri.WorldGrayCanvas")  %>% 
+  setView(lat=25, lng=2.8 , zoom=2) %>%
+  
+    # Base groups = Background layer
+    addTiles(group = "OpenStreetMap") %>%
+    #addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
+    #addProviderTiles(providers$Stamen.Toner, group = "Toner")  %>%
+    
+    # Data Layers
+  addPolygons(group="Target Area",
+                stroke = FALSE, fillOpacity = 1, smoothFactor = 0.5, 
+                color = ~colorQuantile("Reds", Burden_target)(Burden_target),
+                popup = paste("Country:",world_spdf$NAME,"<br/>",
+                              "Target Area:", world_spdf$Burden_target,"<br/>")) %>%
+  addLegend("bottomright", pal = colorNumeric("Reds", world_spdf$Burden_target), 
+            values = ~Burden_target, title = "Target", opacity = 1) %>%
+  
+  addPolygons(group="Admissions",
+                stroke = FALSE, fillOpacity = 1, smoothFactor = 0.5, 
+                color = ~colorQuantile("Greens", Admission_newchild)(Admission_newchild),
+                popup = paste("Country:",world_spdf$NAME,"<br/>",
+                              "Admissions:", world_spdf$Admission_newchild,"<br/>")) %>%
+  addLegend("bottomleft", pal = colorNumeric("Greens", world_spdf$Admission_newchild), 
+            values = ~Admission_newchild, title = "Admissions", opacity = 1)%>%
+  
+    # Layers control
+    addLayersControl(
+    baseGroups = c("OpenStreetMap"),
+    overlayGroups = c("Target Area","Admissions"),
+    options = layersControlOptions(collapsed =T))
+
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+
+burden <- c(10461,	203754,	2024390,	39111,	902309,	5492273,	2695617)
+target <- c(800,	89129,	1034644,	24111,	391753,	439093,	2019409)
+admissions <- c(122,	93934,	855880,	23505,	373590,	442076,	1744458)
+region <- c("CEECIS", "EAPRO" , "ESARO" , "LACRO" , "MENA" , "ROSA" , "WCARO")
+
+coverage <- data.frame(burden, target, admissions, region)
+names(coverage) <- c("National Burden","Target Area", "Admissions", "Region")
+
+
+
+```
+
+
+
+
+
+###Graph 2. Target and admissions of children 6 to 59 months old to SAM treatment, per region, 2015
+
+#####The regional burden and targets, compared with admissions in 2015, make clear that there are still far too many children who require treatment but are being left behind, particularly in South Asia.
+
+```{r, echo=FALSE, message=FALSE, warning=F}
+library(plotly)
+p <- plot_ly(coverage, x = ~region, y = ~burden, type = 'bar', name = 'Burden') %>%
+  add_trace(y = ~target, name = 'Target') %>%
+  add_trace(y = ~admissions, name = 'Admissions') %>%
+  layout(yaxis = list(title = 'Count'), barmode = 'group')
+p
+```
+
+
