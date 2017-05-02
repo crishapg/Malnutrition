@@ -19,10 +19,11 @@ Undernutrition puts children at greater risk of dying from common infections, in
 
 Poor nutrition in the first 1,000 days of a child's life can also lead to stunted growth, which is irreversible and associated with impaired cognitive ability and reduced school and work performance.
 
-####Forms of malnutrition
-Stunting: refers to a child who is too short for his or her age. Stunting is the failure to grow both physically and cognitively and is the result of chronic or recurrent malnutrition. The devastating effects of stunting can last a lifetime. 
+###Forms of malnutrition
 
-Wasting: refers to a child who is too thin for his or her height. Wasting, or acute malnutrition, is the result of recent rapid weight loss or the failure to gain weight. A child who is moderately or severely wasted has an increased risk of death, but treatment is possible. 
+<img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/images/definitions.png" width="100%" />
+
+
 
 ```{r, include=FALSE}
 library(raster)
