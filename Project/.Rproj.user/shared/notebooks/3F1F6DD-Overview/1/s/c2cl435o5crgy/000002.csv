@@ -1,4 +1,0 @@
-"0","library(raster)"
-"0","world_spdf <- shapefile(""C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/data/world_map/TM_WORLD_BORDERS_SIMPL-0.3.shp"")"
-"2","Error in .requireRgdal() : package 'rgdal' is not available
-"

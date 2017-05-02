@@ -68,15 +68,12 @@ Counselling on infant and young child feeding can empower mothers and caregivers
 These figures provide only a partial snapshot of the current situation of infant and young child feeding counselling. There is a need to improve the availability and quality of data by strengthening national information systems and nutrition surveillance systems.
 
 
-###Graph 1. Expanding counselling reach and data to drive progress
+###Graph 1. Number of mothers reched for IYCF counselling, per region, 2015
+
 #### In 2015, 10.7 million mothers of children under two years were reached with infant and young child feeding counselling
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = ~Region, type = "bar")
+plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = "#de8a78", type = "bar")
 ```
 
-#### In 64 countries, 170,000 primary health care facilities provided individual counselling on a regular basis
-
-```{r, echo=FALSE}
-plot_ly(iycf, x = ~FP_counsellingPHC, type = "histogram")
-```
 

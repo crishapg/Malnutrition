@@ -18,9 +18,9 @@ sam <- readstata13::read.dta13("data/2015_SAM_TOTAL_codes.dta")
 ```
 
 
-#####Globally the number of children admitted to SAM treatment programmes has increased steadily, from 1.4 million in 2009 to 3.53 million children in 2015. The rate of increase is slow compared with previous years.
+Globally the number of children admitted to SAM treatment programmes has increased steadily, from 1.4 million in 2009 to 3.53 million children in 2015. The rate of increase is slow compared with previous years.
 
-###Graph 1. Trends in global admissions to SAM programmes
+####Graph 1. Trends in global admissions to SAM programmes
 ```{r, include=FALSE}
 samadm <- c(1.4, 1.96 , 2.66, 2.91, 3.21, 3.5)
 year <- c("2009", "2011", "2012", "2013", "2014", "2015")
@@ -47,12 +47,12 @@ world_spdf@data <- samburden
 
 ```
 
-#####More children are being treated for SAM than ever before: admissions increased from 3.2 million children from 57 countries in 2014 to 3.5 million children in 68 countries in 2015. However, there is still only a shocking one in five children with SAM receiving lifesaving care. 
+More children are being treated for SAM than ever before: admissions increased from 3.2 million children from 57 countries in 2014 to 3.5 million children in 68 countries in 2015. However, there is still only a shocking one in five children with SAM receiving lifesaving care. 
 
 
 
 
-###Map 1. Target and admissions of children 6 to 59 months old to SAM treatment, 2015
+####Map 1. Target and admissions of children 6 to 59 months old to SAM treatment, 2015
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
 
@@ -110,9 +110,9 @@ names(coverage) <- c("National Burden","Target Area", "Admissions", "Region")
 
 
 
-###Graph 2. Target and admissions of children 6 to 59 months old to SAM treatment, per region, 2015
+####Graph 2. Target and admissions of children 6 to 59 months old to SAM treatment, per region, 2015
 
-#####The regional burden and targets, compared with admissions in 2015, make clear that there are still far too many children who require treatment but are being left behind, particularly in South Asia.
+The regional burden and targets, compared with admissions in 2015, make clear that there are still far too many children who require treatment but are being left behind, particularly in South Asia.
 
 ```{r, echo=FALSE, message=FALSE, warning=F}
 library(plotly)

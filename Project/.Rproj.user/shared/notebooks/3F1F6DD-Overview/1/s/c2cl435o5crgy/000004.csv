@@ -1,0 +1,6 @@
+"0","library(raster)"
+"0","world_spdf <- shapefile(""C:/Users/crish/OneDrive/Documents/Columbia SIPA/2017 Spring/Data Visualization/Final Project/data/world_map/TM_WORLD_BORDERS_SIMPL-0.3.shp"")"
+"0","# Merge the QoG data to Shape Files"
+"0","library(dplyr)"
+"0","mapjme <- world_spdf@data %>% left_join(jme_latest, by = c(ISO3 = ""iso""))"
+"0","world_spdf@data <- mapjme"

@@ -11,7 +11,7 @@ Micronutrient powders (MNP) are best introduced as part of an IYCF strategy. Whe
 
 ```{r, include=FALSE}
 
-devtools::install_github("rstudio/leaflet")
+#devtools::install_github("rstudio/leaflet")
 
 library(leaflet)
 library (raster)
@@ -28,7 +28,7 @@ mnp <- readstata13::read.dta13("data/2015_MNP.dta")
 
 
 ```{r, echo=FALSE}
-#Mapa integration
+#Map integration
 ```
 
 
@@ -38,9 +38,7 @@ In 2015, MNP interventions reached more than 10 million2 children 6-59 months of
 
 ```{r, include=FALSE}
 childrenMNP <- c(203552,2285242,570648,4263234,446194,1785867,612016)
-Region <- c("CEE/CIS", "East Asia and Pacific", "Eastern and Southern Africa", 
-            "Latin America and the Caribbean", "Middle East and North Africa",
-            "South Asia", "West and Central Africa")
+Region <- c("CEE/CIS", "EAPRO", "ESARO", "LACRO", "MENA", "ROSA" , "WCARO")
 MNP <- data.frame(childrenMNP,Region)
 names(MNP) <- c("childrenMNP","Region")
 
