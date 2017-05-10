@@ -1,0 +1,5 @@
+"0","library(plotly)"
+"0","plot_ly(perc_malnutrition, x = ~perc_wast, y=~region, type = ""bar"", "
+"0","                     text = ~paste('Wasting %:',perc_wasting), name='% Wasting')  %>%"
+"0","  add_trace(x = ~perc_stunt, text = ~paste('Stunting %:',perc_stunt), name = '% Stunting') %>%"
+"0","  layout(xaxis = list(title = 'Percentage of children'), barmode = 'group')"

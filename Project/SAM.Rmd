@@ -98,29 +98,37 @@ burden <- c(10461,	203754,	2024390,	39111,	902309,	5492273,	2695617)
 target <- c(800,	89129,	1034644,	24111,	391753,	439093,	2019409)
 admissions <- c(122,	93934,	855880,	23505,	373590,	442076,	1744458)
 region <- c("CEECIS", "EAPRO" , "ESARO" , "LACRO" , "MENA" , "ROSA" , "WCARO")
+burden_p <-	c(3.83,	3.78,	32.93,	2.88,	61.79,	31.71,	34.29)
+target_p <-	c(0.29,	1.65,	16.83,	1.77,	26.83,	2.53,	25.69)
+admissions_p <-	c(0.045,	1.74,	13.92,	1.73,	25.58,	2.55,	22.19)
 
-coverage <- data.frame(burden, target, admissions, region)
-names(coverage) <- c("National Burden","Target Area", "Admissions", "Region")
+coverage <- data.frame(burden, target, admissions, region, burden_p, target_p, admissions_p)
+names(coverage) <- c( "Region", "Estimated Burden","Target Area", "Admissions", 
+                      "% Estimated Burden", "% Target Area", "% Admissions")
 
+```
 
+The regional burden and targets, compared with admissions in 2015, make clear that there are still far too many children who require treatment but are being left behind. In Middle East and North Africa and South Asia the coverage rates are low.
+
+####Graph 2. Target and admissions of to SAM treatment. Percentage of children 6 to 59 months old, per region, 2015 
+```{r, echo=FALSE, message=FALSE, warning=F}
+library(plotly)
+plot_ly(coverage, x = ~region, y = ~burden_p, type = 'bar', name = 'Burden (%)') %>%
+  add_trace(y = ~target_p, name = 'Target (%)') %>%
+  add_trace(y = ~admissions_p, name = 'Admissions (%)') %>%
+  layout(yaxis = list(title = 'Count'), barmode = 'group')
 
 ```
 
 
-
-
-
-####Graph 2. Target and admissions of children 6 to 59 months old to SAM treatment, per region, 2015
-
-The regional burden and targets, compared with admissions in 2015, make clear that there are still far too many children who require treatment but are being left behind, particularly in South Asia.
+####Graph 3. Target and admissions of to SAM treatment. Number of children 6 to 59 months old, per region, 2015 
 
 ```{r, echo=FALSE, message=FALSE, warning=F}
 library(plotly)
-p <- plot_ly(coverage, x = ~region, y = ~burden, type = 'bar', name = 'Burden') %>%
-  add_trace(y = ~target, name = 'Target') %>%
-  add_trace(y = ~admissions, name = 'Admissions') %>%
+plot_ly(coverage, x = ~region, y = ~burden, type = 'bar', name = 'Burden (#)') %>%
+  add_trace(y = ~target, name = 'Target (#)') %>%
+  add_trace(y = ~admissions, name = 'Admissions (#)') %>%
   layout(yaxis = list(title = 'Count'), barmode = 'group')
-p
 ```
 
 

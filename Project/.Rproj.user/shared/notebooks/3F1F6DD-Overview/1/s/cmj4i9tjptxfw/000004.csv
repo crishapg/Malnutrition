@@ -1,0 +1,14 @@
+"0","library(plotly) "
+"0","plot_ly(jme_latest, x = ~stunting, y=~wasting, "
+"0","                     color = ~region, type = ""scatter"","
+"0","                     text = ~paste(country, 'Year:', year))"
+"2","No scatter mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
+"
+"2","Ignoring 2 observations"
+"2","No scatter mode specifed:
+  Setting the mode to markers
+  Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
+"
+"2","Ignoring 2 observations"

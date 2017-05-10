@@ -1,0 +1,9 @@
+"0","library(shiny)"
+"0","ui <- fluidPage()"
+"0","server <- function(input, output) {}"
+"0","shinyApp(ui = ui, server = server)"
+"2","
+Listening on http://127.0.0.1:6513
+"
+"2","
+"

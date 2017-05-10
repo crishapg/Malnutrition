@@ -107,9 +107,10 @@ ggplot(jme_latest, aes(x=stunting, y=wasting, color=region)) + geom_point(alpha=
 
 
 
+
+```{r, include=FALSE}
 #### Graph 1. Relationship between stunting and wasting prevalence
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
 library(plotly) 
 plot_ly(jme_latest, x = ~stunting, y=~wasting, 
                      color = ~region, type = "scatter",
@@ -117,8 +118,28 @@ plot_ly(jme_latest, x = ~stunting, y=~wasting,
 ```
 
 
+```{r, include=FALSE}
+region <- c("CEECIS", "EAPRO", "ESARO", "LACRO", "MENA", "ROSA" , "WCARO")
+perc_wast <- c(3.0,	5.5,	6.2,	1.7,	8.7,	14.2,	8.6)
+perc_stunt <- c(11.9,	18.7,	35.7,	12.8,	21.3,	39.1,	33.8)
+perc_malnutrition <- data.frame(region, perc_wast, perc_stunt)
+names(perc_malnutrition) <- c("Region", "perc_wasting","perc_stunt")
+```
 
-At a regional level, South Asia is the most affected region with over 20 million children with malnutrition. 
+The prevalence of wasting and stunting show that malnutrition is present in all areas. The most affected regions in terms of the proportion of children affected are South Asia (ROSA), East and South Africa (ESARO) and West and Central Africa (WCARO).  
+
+##Global prevalence of stunting and wasting, per region
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(plotly)
+plot_ly(perc_malnutrition, x = ~perc_wast, y=~region, type = "bar", 
+                     text = ~paste('Wasting %:',perc_wasting), name='% Wasting')  %>%
+  add_trace(x = ~perc_stunt, text = ~paste('Stunting %:',perc_stunt), name = '% Stunting') %>%
+  layout(xaxis = list(title = 'Percentage of children'), barmode = 'group')
+```
+
+
+
+However, when looking at absolute numbers, South Asia is the most affected region with over 20 million children with malnutrition. 
 
 #### Graph 2. Wasting and stunting, number of children affected per region, 2015
 
@@ -128,12 +149,12 @@ library(plotly)
 p<- plot_ly(jme2014, x = ~num_wasting, y=~region, type = "bar", 
                      text = ~paste('Wasting, number of children:',num_wasting), name='Wasting')  %>%
   add_trace(x = ~num_stunting, name = 'Stunting') %>%
-  layout(xaxis = list(title = 'Count'), barmode = 'group')
+  layout(xaxis = list(title = 'Number of children'), barmode = 'group')
 p
 
 ```
 
-###Trends in malnutrition prevalence
+
 
 ```{r, include=FALSE}
 
@@ -190,7 +211,7 @@ ggplot(data=trend_stunting_global, aes(x=year, y=stunting_global)) +
           plot.title = element_text(face = "bold", color = "black", size = 11, hjust=0.5))
 ```
 
-
+###Trends in malnutrition prevalence
 
 Malnutrition rates remain alarming: stunting is declining too slowly
 
@@ -198,9 +219,12 @@ Malnutrition rates remain alarming: stunting is declining too slowly
 #### Graph 3. Global prevalence of stunting, 1995-2015
 
 ```{r, echo=FALSE}
-plot_ly(trend_stunting_global, x = ~year, y=~stunting_global, 
+
+p<- plot_ly(trend_stunting_global, x = ~year, y=~stunting_global, 
                      type = "bar",
-                     text = ~paste('Stunting (%):',stunting_global, 'Year:', year))
+                     text = ~paste('Stunting (%):',stunting_global, 'Year:', year)) %>%
+  layout(yaxis = list(title = 'Global prevalence of stunting, 1995-2015'), barmode = 'group')
+p
 ```
 
 
@@ -267,7 +291,10 @@ ggplot(jme0614, aes(x=year, y=wasting)) +
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=3, fig.align='center'}
 
-myvars <- c("country", "region", "year", "wasting", "stunting", "pop5")
+jmeyears$wasting1 <- round(jmeyears$wasting, digits = 2)
+jmeyears$stunting1 <- round(jmeyears$stunting, digits = 2)
+jmeyears$pop51 <- round(jmeyears$pop5, digits = 0)
+myvars <- c("country", "region", "year", "wasting1", "stunting1", "pop51")
 jme_short <- jmeyears[myvars]
 
 #install.packages("DT")

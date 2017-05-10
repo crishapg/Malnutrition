@@ -1,0 +1,2 @@
+"0","plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = ""#2e94ab"", type = ""bar"") %>%"
+"0","  layout(yaxis = list(title = 'Number of mothers reached with IYCF counselling'), barmode = 'group')"

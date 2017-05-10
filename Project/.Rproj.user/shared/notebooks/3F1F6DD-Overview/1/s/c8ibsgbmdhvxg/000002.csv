@@ -1,0 +1,5 @@
+"0","region <- c(""CEECIS"", ""EAPRO"", ""ESARO"", ""LACRO"", ""MENA"", ""ROSA"" , ""WCARO"")"
+"0","perc_wast <- c(3.0,	5.5,	6.2,	1.7,	8.7,	14.2,	8.6)"
+"0","perc_stunt <- c(11.9,	18.7,	35.7,	12.8,	21.3,	39.1,	33.8)"
+"0","perc_malnutrition <- data.frame(region, perc_wast, perc_stunt)"
+"0","names(perc_malnutrition) <- c(""Region"", ""perc_wasting"",""perc_stunt"")"

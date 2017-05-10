@@ -1,6 +1,0 @@
-"0","library(plotly)"
-"0","p <- plot_ly(coverage, x = ~region, y = ~burden, type = 'bar', name = 'Burden') %>%"
-"0","  add_trace(y = ~target, name = 'Target') %>%"
-"0","  add_trace(y = ~admissions, name = 'Admissions') %>%"
-"0","  layout(yaxis = list(title = 'Count'), barmode = 'group')"
-"0","p"

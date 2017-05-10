@@ -8,6 +8,7 @@ output: html_document
 <img src="C:/Users/crish/OneDrive/Documents/GitHub/Malnutrition/Project/images/framework.png" width="80%" />
 
 
+
 ##Data
 - Joint Malnutrition Estimates. UNICEF, World Bank, WHO -> survey data from MICS, DHS and other national surveys
 - NutriDash - an online annual data capture and reporting system for nutrition programming information, which tracks data for both UNICEF and non-UNICEF supported programmes on a global scale.

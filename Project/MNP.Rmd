@@ -34,18 +34,18 @@ mnp <- readstata13::read.dta13("data/2015_MNP.dta")
 
 In 2015, MNP interventions reached more than 10 million children 6-59 months of age in 65 countries. The scale and reach of MNP programmes varied across the regions, with Latin America and the Caribbean, East Asia and the Pacific and South Asia accounting for two thirds of all children reached.
 
-### Figure 1. Children given Micronutrient Powder, per region, 2015
+### Graph 1. Children given Micronutrient Powder, per region, 2015
 
 ```{r, include=FALSE}
 childrenMNP <- c(203552,2285242,570648,4263234,446194,1785867,612016)
-Region <- c("CEE/CIS", "EAPRO", "ESARO", "LACRO", "MENA", "ROSA" , "WCARO")
-MNP <- data.frame(childrenMNP,Region)
+region <- c("CEECIS", "EAPRO", "ESARO", "LACRO", "MENA", "ROSA" , "WCARO")
+MNP <- data.frame(childrenMNP,region)
 names(MNP) <- c("childrenMNP","Region")
 
 library(ggplot2)
 library(ggthemes)
 library(scales)
-ggplot(data=MNP, aes(x=Region, y=childrenMNP, fill=Region)) + geom_bar(stat = "identity") + 
+ggplot(data=MNP, aes(x=region, y=childrenMNP, fill=Region)) + geom_bar(stat = "identity") + 
   scale_fill_brewer(palette="YlGnBu") +
   ggtitle("Graph 1. Number of children given Micronutrient Powder, per region, 2015") + 
   labs(x="", y = "Children given MNP", size=8) +
@@ -70,7 +70,8 @@ ggplot(data=MNP, aes(x=Region, y=childrenMNP, fill=Region)) + geom_bar(stat = "i
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(plotly)
-plot_ly(MNP, x = ~Region, y=~childrenMNP, color = ~Region, type = "bar", opacity=0.8)
+plot_ly(MNP, x = ~region, y=~childrenMNP, color = ~childrenMNP, type = "bar", opacity=0.8) %>%
+  layout(yaxis = list(title = 'Number of children given MNP'), barmode = 'group')
 ```
 
 #Fluctuations in coverage have left some of the most vulnerable children at risk.

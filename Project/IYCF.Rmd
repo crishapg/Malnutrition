@@ -73,7 +73,9 @@ These figures provide only a partial snapshot of the current situation of infant
 #### In 2015, 10.7 million mothers of children under two years were reached with infant and young child feeding counselling
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = "#de8a78", type = "bar")
+plot_ly(iycf, x = ~Region, y=~Counselling_mothers, color = "#de8a78", type = "bar") %>%
+  layout(yaxis = list(title = 'Number of mothers reached with IYCF counselling'), barmode = 'group')
+
 ```
 
 
